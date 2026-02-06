@@ -833,7 +833,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="bg-black min-h-screen selection:bg-black selection:text-white">
+<main className="bg-black min-h-screen overflow-x-hidden selection:bg-black selection:text-white">
       <ScrollProgress />
       <AnimatePresence mode="wait">
         {loading ? (
