@@ -284,15 +284,27 @@ const AboutSection: React.FC<{ lang: Language }> = ({ lang }) => {
             </motion.div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="space-y-6 md:space-y-10">
-              <div className="space-y-2">
-                <span className="text-zinc-400 block text-sm md:text-base font-mono mb-4 md:mb-6 uppercase tracking-widest">Visionary Path</span>
-                <h3 className="text-[clamp(1.8rem,4.5vw,4.5rem)] font-syne font-bold tracking-tight leading-[1.2] md:leading-[1.3] text-black">
-                  <div className="block"><MaskReveal>From Creative Eyes</MaskReveal></div>
-                  <div className="block mt-2 md:mt-4"><MaskReveal delay={0.15}>To Intelligent Systems.</MaskReveal></div>
-                </h3>
-              </div>
+           <div className="lg:col-span-6">
+  <div className="space-y-6 md:space-y-10">
+    <div className="space-y-2 overflow-visible">
+      <span className="text-zinc-400 block text-sm md:text-base font-mono mb-4 md:mb-6 uppercase tracking-widest">
+        Visionary Path
+      </span>
+
+      {/* 見出しだけ左へ（1行目/2行目まとめて） */}
+      <h3
+        className="text-[clamp(1.8rem,4.5vw,4.5rem)] font-syne font-bold tracking-tight leading-[1.2] md:leading-[1.3] text-black
+                   overflow-visible relative
+                   -left-6 sm:-left-8 md:-left-10 lg:-left-12"
+      >
+        <div className="block">
+          <MaskReveal>From Creative Eyes</MaskReveal>
+        </div>
+        <div className="block mt-2 md:mt-4">
+          <MaskReveal delay={0.15}>To Intelligent Systems.</MaskReveal>
+        </div>
+      </h3>
+</div>
               
               <div className="max-w-xl space-y-10">
                 <p className="text-zinc-500 font-light text-sm md:text-[1.15rem] leading-[1.8] md:leading-[2.2] text-justify">
