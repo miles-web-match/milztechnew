@@ -293,14 +293,16 @@ const AboutSection: React.FC<{ lang: Language }> = ({ lang }) => {
           Visionary Path
         </span>
 
-        <h3 className="text-[clamp(1.8rem,4.5vw,4.5rem)] font-syne font-bold tracking-tight leading-[1.2] md:leading-[1.3] text-black">
-          <div className="block">
-            <MaskReveal>From Creative Eyes</MaskReveal>
-          </div>
-          <div className="block mt-2 md:mt-4">
-            <MaskReveal delay={0.15}>To Intelligent Systems.</MaskReveal>
-          </div>
-        </h3>
+       <h3 className="text-[clamp(1.8rem,4.5vw,4.5rem)] font-syne font-bold tracking-tight leading-[1.2] md:leading-[1.3] text-black
+               relative -left-4 sm:-left-6 md:-left-8 lg:-left-10">
+  <div className="block">
+    <MaskReveal>From Creative Eyes</MaskReveal>
+  </div>
+  <div className="block mt-2 md:mt-4">
+    <MaskReveal delay={0.15}>To Intelligent Systems.</MaskReveal>
+  </div>
+</h3>
+
       </div>
 
       <div className="max-w-xl space-y-10">
