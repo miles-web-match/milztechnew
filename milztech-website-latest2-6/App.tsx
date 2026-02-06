@@ -619,7 +619,7 @@ const ServiceSection: React.FC<{ lang: Language }> = ({ lang }) => {
 
 // Paste your Google Apps Script Web App URL here when ready.
 // Example: "https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXX/exec"
-const GAS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw5uAFjfYJHKwh03DaTnx0aq4EdTcfZRVA9mikV8VidAbETfxJ4ft2QawcmF0oMALYk/exec"; 
+const GAS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwXvTGzQmv7gLn9PgcLzd7sELSevH3TN-lka17j72GAxfXm0KD2fIaOcvc0_bCC8SSL/exec"; 
 
 const Contact: React.FC<{ lang: Language }> = ({ lang }) => {
   const t = (k: string) => DICT[lang][k as keyof typeof DICT['ja']] || k;
