@@ -11,7 +11,7 @@ const EASE_SMOOTH: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const MaskReveal: React.FC<{ children: React.ReactNode; delay?: number; duration?: number; immediate?: boolean; className?: string }> = ({ children, delay = 0, duration = 1.2, immediate = false, className = "" }) => {
   return (
-    <div className={`relative overflow-hidden inline-flex justify-center items-center py-[1em] -my-[1em] px-[0.6em] -mx-[0.6em] align-middle whitespace-nowrap ${className}`}>
+    <div className={`relative overflow-hidden inline-flex justify-center items-center py-[1em] -my-[1em] px-[1em] -mx-[1em] align-middle whitespace-nowrap ${className}`}>
       <motion.div
         initial={{ y: "120%" }}
         animate={immediate ? { y: 0 } : undefined}
