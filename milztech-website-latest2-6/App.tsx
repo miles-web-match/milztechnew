@@ -11,14 +11,14 @@ const EASE_SMOOTH: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const MaskReveal: React.FC<{ children: React.ReactNode; delay?: number; duration?: number; immediate?: boolean; className?: string }> = ({ children, delay = 0, duration = 1.2, immediate = false, className = "" }) => {
   return (
-    <div className={`relative overflow-hidden inline-flex justify-center items-center py-[1em] -my-[1em] px-[1em] -mx-[1em] align-middle whitespace-nowrap ${className}`}>
+    <div className={`relative overflow-hidden inline-flex justify-center items-center py-[1em] -my-[1em] px-[3em] -mx-[3em] align-middle whitespace-nowrap ${className}`}>
       <motion.div
         initial={{ y: "120%" }}
         animate={immediate ? { y: 0 } : undefined}
         whileInView={!immediate ? { y: 0 } : undefined}
         viewport={{ once: true, amount: 0 }} 
         transition={{ duration, delay, ease: EASE_HEAVY }}
-        className="pb-[0.05em]"
+        className="pb-[0.05em] px-[0.5em]"
       >
         {children}
       </motion.div>
@@ -619,7 +619,7 @@ const ServiceSection: React.FC<{ lang: Language }> = ({ lang }) => {
 
 // Paste your Google Apps Script Web App URL here when ready.
 // Example: "https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXX/exec"
-const GAS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqkd_fjQKjCZPPsNxZ1wRUCUbzwQBaAADuIApCCdFRp5rH1JpJfAX6C5MRXhpT_YgW/exec"; 
+const GAS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6WqgMTOi_TjcHiZtyrXy94J0ElRsIPQSporupXhEtFiOHraOzI0t9JvyZS8R0YzKI/exec"; 
 
 const Contact: React.FC<{ lang: Language }> = ({ lang }) => {
   const t = (k: string) => DICT[lang][k as keyof typeof DICT['ja']] || k;
@@ -636,9 +636,9 @@ const Contact: React.FC<{ lang: Language }> = ({ lang }) => {
       if (GAS_SCRIPT_URL) {
         // Actual submission to Google Apps Script
         const formParams = new FormData();
-        formParams.append('name', formData.name);
-        formParams.append('email', formData.email);
-        formParams.append('message', formData.message);
+        formParams.append('name', formData.name.trim());
+        formParams.append('email', formData.email.trim());
+        formParams.append('message', formData.message.trim());
 
         // 'no-cors' mode is required for GAS Web Apps called from client-side JS
         await fetch(GAS_SCRIPT_URL, {
