@@ -265,69 +265,66 @@ const AboutSection: React.FC<{ lang: Language }> = ({ lang }) => {
       <div className="max-w-[1600px] mx-auto relative z-10">
         <SectionHeader num="01" title="About Us" subtitle="Foundations" dark />
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-24 items-center">
-          <div className="lg:col-span-6">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5 }}
-              className="relative aspect-[16/11] overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-zinc-200 group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-white/40"
-            >
-              <img 
-                src="https://little-blue-hrkbky6dlb.edgeone.app/about.jpg" 
-                alt="About Milztech"
-                className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-90 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100"
-              />
-              <div className="absolute inset-0 bg-black/5 opacity-20 pointer-events-none mix-blend-overlay" />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/20 to-transparent" />
-            </motion.div>
+        <div className="grid xl:grid-cols-12 gap-10 xl:gap-16 items-center">
+  {/* 画像：xl以上で左、xl未満は縦積み */}
+  <div className="xl:col-span-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.5 }}
+      className="relative aspect-[16/11] overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-zinc-200 group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-white/40"
+    >
+      <img
+        src="https://little-blue-hrkbky6dlb.edgeone.app/about.jpg"
+        alt="About Milztech"
+        className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-90 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100"
+      />
+      <div className="absolute inset-0 bg-black/5 opacity-20 pointer-events-none mix-blend-overlay" />
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/20 to-transparent" />
+    </motion.div>
+  </div>
+
+  {/* テキスト：xl以上で右、xl未満は縦積み */}
+  <div className="xl:col-span-6">
+    <div className="space-y-6 md:space-y-10">
+      <div className="space-y-2">
+        <span className="text-zinc-400 block text-sm md:text-base font-mono mb-4 md:mb-6 uppercase tracking-widest">
+          Visionary Path
+        </span>
+
+        <h3 className="text-[clamp(1.8rem,4.5vw,4.5rem)] font-syne font-bold tracking-tight leading-[1.2] md:leading-[1.3] text-black">
+          <div className="block">
+            <MaskReveal>From Creative Eyes</MaskReveal>
           </div>
+          <div className="block mt-2 md:mt-4">
+            <MaskReveal delay={0.15}>To Intelligent Systems.</MaskReveal>
+          </div>
+        </h3>
+      </div>
 
-           <div className="lg:col-span-6">
-  <div className="space-y-6 md:space-y-10">
-    <div className="space-y-2 overflow-visible">
-      <span className="text-zinc-400 block text-sm md:text-base font-mono mb-4 md:mb-6 uppercase tracking-widest">
-        Visionary Path
-      </span>
+      <div className="max-w-xl space-y-10">
+        <p className="text-zinc-500 font-light text-sm md:text-[1.15rem] leading-[1.8] md:leading-[2.2] text-justify">
+          {t('vision_body')}
+        </p>
 
-      {/* 見出しだけ左へ（1行目/2行目まとめて） */}
-      <h3
-        className="text-[clamp(1.8rem,4.5vw,4.5rem)] font-syne font-bold tracking-tight leading-[1.2] md:leading-[1.3] text-black
-                   overflow-visible relative
-                   -left-6 sm:-left-8 md:-left-10 lg:-left-12"
-      >
-        <div className="block">
-          <MaskReveal>From Creative Eyes</MaskReveal>
-        </div>
-        <div className="block mt-2 md:mt-4">
-          <MaskReveal delay={0.15}>To Intelligent Systems.</MaskReveal>
-        </div>
-      </h3>
-</div>
-              
-              <div className="max-w-xl space-y-10">
-                <p className="text-zinc-500 font-light text-sm md:text-[1.15rem] leading-[1.8] md:leading-[2.2] text-justify">
-                  {t('vision_body')}
-                </p>
-                
-                <Magnetic strength={0.2}>
-                  <button 
-                    onClick={() => handleScrollTo('founders')}
-                    className="flex items-center gap-4 group cursor-pointer"
-                  >
-                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-black/10 flex items-center justify-center bg-transparent text-black group-hover:bg-black group-hover:text-white transition-all duration-500">
-                      <span className="text-lg md:text-2xl">→</span>
-                    </div>
-                    <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-black opacity-60 group-hover:opacity-100 transition-opacity">
-                      {t('founders_label')}
-                    </span>
-                  </button>
-                </Magnetic>
-              </div>
+        <Magnetic strength={0.2}>
+          <button
+            onClick={() => handleScrollTo('founders')}
+            className="flex items-center gap-4 group cursor-pointer"
+          >
+            <div className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-black/10 flex items-center justify-center bg-transparent text-black group-hover:bg-black group-hover:text-white transition-all duration-500">
+              <span className="text-lg md:text-2xl">→</span>
             </div>
-          </div>
-        </div>
+            <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-black opacity-60 group-hover:opacity-100 transition-opacity">
+              {t('founders_label')}
+            </span>
+          </button>
+        </Magnetic>
+      </div>
+    </div>
+  </div>
+</div>
 
         {/* Company Outline */}
         <div className="mt-24 md:mt-40 border-t border-black/10 pt-16 md:pt-24">
