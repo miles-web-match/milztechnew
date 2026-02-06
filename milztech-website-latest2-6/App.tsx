@@ -617,6 +617,10 @@ const ServiceSection: React.FC<{ lang: Language }> = ({ lang }) => {
   );
 };
 
+// Paste your Google Apps Script Web App URL here when ready.
+// Example: "https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXX/exec"
+const GAS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqkd_fjQKjCZPPsNxZ1wRUCUbzwQBaAADuIApCCdFRp5rH1JpJfAX6C5MRXhpT_YgW/exec"; 
+
 const Contact: React.FC<{ lang: Language }> = ({ lang }) => {
   const t = (k: string) => DICT[lang][k as keyof typeof DICT['ja']] || k;
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -629,25 +633,23 @@ const Contact: React.FC<{ lang: Language }> = ({ lang }) => {
     setStatus('sending');
 
     try {
-      // NOTE for GAS Integration:
-      // ここにGoogle Apps Script (GAS) のウェブアプリURLを設定してください。
-      // 例: const GAS_URL = "https://script.google.com/macros/s/xxxxxxxxxxxxxxxxx/exec";
-      // 
-      // const formDataParams = new FormData();
-      // formDataParams.append('name', formData.name);
-      // formDataParams.append('email', formData.email);
-      // formDataParams.append('message', formData.message);
-      //
-      // GAS側でCORSエラーが出る場合が多いため、no-corsモードやiframeでの送信、
-      // あるいはURLSearchParamsを使用するなどの対応が必要になる場合があります。
-      //
-      // await fetch(GAS_URL, {
-      //   method: 'POST',
-      //   body: formDataParams
-      // });
+      if (GAS_SCRIPT_URL) {
+        // Actual submission to Google Apps Script
+        const formParams = new FormData();
+        formParams.append('name', formData.name);
+        formParams.append('email', formData.email);
+        formParams.append('message', formData.message);
 
-      // 現在はUIの動作確認用に、1.5秒後に成功ステータスへ移行するシミュレーションとなっています。
-      await new Promise(resolve => setTimeout(resolve, 1500));
+        // 'no-cors' mode is required for GAS Web Apps called from client-side JS
+        await fetch(GAS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formParams
+        });
+      } else {
+         // Simulation mode if URL is not set yet
+         await new Promise(resolve => setTimeout(resolve, 1500));
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
