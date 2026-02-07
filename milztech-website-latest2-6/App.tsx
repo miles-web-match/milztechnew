@@ -167,7 +167,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 2.0, delay: 0.8, ease: "easeOut" }}
             className="text-[9px] md:text-[12px] font-black uppercase tracking-[0.8em] md:tracking-[2em] text-white block ml-[0.8em] md:ml-[2em] text-center will-change-transform"
           >
-            AI · EXPERIENCE · EXSTREAM
+            AI · EXPERIENCE · EXSTREME
           </motion.span>
         </div>
         
